@@ -140,29 +140,27 @@ DirectionsRenderer.prototype._redraw_panel = function() {
 
       var style = document.createElement('style');
       shadowRoot.appendChild(style);
-      style.innerHTML = `
-        div.summary1 {
-          color: green;
-          font-size: 1.5em;
-          padding-top: 5%;
-          padding-bottom: 2%;
-        }
-        div.summary2 {
-          color: green;
-          font-size: 1em;
-        }
-        ul.steps {
-          list-style-type: none;
-          padding: 0%;
-        }
-        li.step {
-          padding: 0.5em;
-          border-bottom: 1px solid #ccc;
-        }
-        li:last-child {
-          border-bottom: none;
-        }
-      `;
+      style.innerHTML = 'div.summary1 {' + 
+          'color: green;' + 
+          'font-size: 1.5em;' + 
+          'padding-top: 5%;' + 
+          'padding-bottom: 2%;' + 
+        '}' + 
+        'div.summary2 {' + 
+          'color: green;' + 
+          'font-size: 1em;' + 
+        '}' + 
+        'ul.steps {' + 
+          'list-style-type: none;' + 
+          'padding: 0%;' + 
+        '}' + 
+        'li.step {' + 
+          'padding: 0.5em;' + 
+          'border-bottom: 1px solid #ccc;' + 
+        '}' + 
+        'li:last-child {' + 
+          'border-bottom: none;' + 
+        '}';
 
       var container = document.createElement('div');
       container.style.position = 'relative';
@@ -249,9 +247,6 @@ DirectionsRenderer.prototype._pathList_updated = function(index) {
   var polyline = self.pathCollection.getAt(index);
   var path = self.pathList.getAt(index);
   polyline.setPoints(path);
-
-  // for test
-  //polyline.setStrokeColor(`rgb(${index * 63}, ${index * 63}, ${index * 63})`);
 
 };
 
