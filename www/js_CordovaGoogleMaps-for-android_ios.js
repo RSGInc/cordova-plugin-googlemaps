@@ -798,7 +798,7 @@ CordovaGoogleMaps.prototype.getMap = function(div, mapOptions) {
       self.domPositions[elemId].isMap = true;
 
       background = background || '#FFFFFFFF';
-      console.log(`background = ${background}`);
+      //console.log(`background = ${background}`);
       background = common.HTMLColor2RGBA(background);
       plugin.google.maps.environment.setBackgroundColor(background);
     }
