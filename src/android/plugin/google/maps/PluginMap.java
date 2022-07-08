@@ -164,7 +164,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
 
   @TargetApi(Build.VERSION_CODES.HONEYCOMB)
   public void getMap(final JSONArray args, final CallbackContext callbackContext) throws JSONException {
-
+    Log.d(TAG, "getMap");
     GoogleMapOptions options = new GoogleMapOptions();
     JSONObject meta = args.getJSONObject(0);
     mapId = meta.getString("__pgmId");
@@ -451,6 +451,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
               // ------------------------------
               // Embed the map if a container is specified.
               // ------------------------------
+              Log.d(TAG, "args.length()");
               if (args.length() == 3) {
                 mapDivId = args.getString(2);
 
@@ -470,15 +471,18 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                           handler.postDelayed(new AdjustInitCamera(params, callbackContext), 750);
                         }
                       });
+                      Log.d(TAG, "setOnCameraIdleListener");
                     } else {
                       mapView.setVisibility(View.VISIBLE);
                       PluginMap.this.onCameraEvent("camera_move_end");
                       callbackContext.success();
+                      Log.d(TAG, "initCameraBounds null");
                     }
                   }
                 });
               } else {
                 if (initCameraBounds != null) {
+                  Log.d(TAG, "initCameraBounds length != 3");
                   map.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
                     @Override
                     public void onCameraIdle() {
@@ -490,6 +494,8 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                     }
                   });
                 } else {
+                  Log.d(TAG, "initCameraBounds null length != 3");
+
                   mapView.setVisibility(View.VISIBLE);
                   PluginMap.this.onCameraEvent("camera_move_end");
                   callbackContext.success();
@@ -499,6 +505,7 @@ public class PluginMap extends MyPlugin implements OnMarkerClickListener,
                 }
               }
             } catch (Exception e) {
+              Log.d(TAG, "isdfsdfsdfsdfsdfsdfsdfsdfsdf");
               callbackContext.error(e.getMessage());
             }
           }
